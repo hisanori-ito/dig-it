@@ -24,7 +24,7 @@ export default async function Home({searchParams}) {
 
   const data = await res.json()
   const results = Object.values(data.albums.items)
-
+  
   return (
     <div>
       <Results results={results} />
