@@ -10,7 +10,8 @@ export default function Card({result}) {
                 src={result.images.at(0).url} 
                 width={500} 
                 height={300}
-                className='group-hover:opacity-75 transition-opacity duration-300'></Image>
+                className='group-hover:opacity-75 transition-opacity duration-300'>
+            </Image>
         </Link>
     </div>
   )
