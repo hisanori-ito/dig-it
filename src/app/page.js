@@ -13,7 +13,7 @@ export default async function Home({searchParams}) {
      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
   })
   const accessToken = await token.json()
-  const res = await fetch (`https://api.spotify.com/v1/browse/new-releases?country=${country}`, {
+  const res = await fetch (`https://api.spotify.com/v1/browse/new-releases`, {
     headers: {
       "Authorization": `Bearer ${accessToken.access_token}`,
     },

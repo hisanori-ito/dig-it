@@ -23,6 +23,10 @@ export default async function AlbumPage({params}) {
         throw new Error("Failed to fetch data")
     }
     const data = await res.json()
+
+    // artist name & id
+    console.log(data.artists.at(0).name)
+    console.log(data.artists.at(0).id)
     
     return (
         <div className="w-full">

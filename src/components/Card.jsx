@@ -16,3 +16,5 @@ export default function Card({result}) {
     </div>
   )
 }
+
+// src={result.album.images.at(0).url} 
