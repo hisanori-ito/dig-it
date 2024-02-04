@@ -2,9 +2,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function Card({result}) {
+export default function AlbumCard({result}) {
   return (
-    <div className='group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg transition-shadow duration-200'>
+    <div className='group cursor-pointer rounded-lg transition-shadow duration-200'>
         <Link href={`/album/${result.id}`}>
             <Image 
                 src={result.images.at(0).url} 
@@ -16,5 +16,3 @@ export default function Card({result}) {
     </div>
   )
 }
-
-// src={result.album.images.at(0).url} 

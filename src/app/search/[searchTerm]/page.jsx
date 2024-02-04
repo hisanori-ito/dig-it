@@ -1,7 +1,8 @@
-import Results from '@/components/Results';
+import AlbumResults from '@/components/AlbumResults';
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN
 
 export default async function SearchPage({ params }) {
   const seachTerm = params.searchTerm;
@@ -13,9 +14,9 @@ export default async function SearchPage({ params }) {
         body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
     })
     const accessToken = await token.json()
-    const res = await fetch (`https://api.spotify.com/v1/search?q=${seachTerm}&type=album`, {
+    const res = await fetch (`https://api.spotify.com/v1/search?q=${seachTerm}&type=album%2Ctrack%2Cartist`, {
         headers: {
-            "Authorization": `Bearer ${accessToken.access_token}`,
+            "Authorization": `Bearer ${ACCESS_TOKEN}`,
         },
     })
     if(!res.ok) {
@@ -26,9 +27,7 @@ export default async function SearchPage({ params }) {
   
     return (
       <div>
-        <Results results={results} />
+        <AlbumResults results={results} />
       </div>
     )
 }
-
-// albumをtrackに変える

@@ -1,7 +1,9 @@
-import Results from "@/components/Results"
+import AlbumResults from "@/components/AlbumResults"
+import AlbumResultsResults from "@/components/AlbumResults"
 
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN
 
 export default async function Home({searchParams}) {
   const country = searchParams.country || "US"
@@ -15,7 +17,7 @@ export default async function Home({searchParams}) {
   const accessToken = await token.json()
   const res = await fetch (`https://api.spotify.com/v1/browse/new-releases`, {
     headers: {
-      "Authorization": `Bearer ${accessToken.access_token}`,
+      "Authorization": `Bearer ${ACCESS_TOKEN}`,
     },
   })
   if(!res.ok) {
@@ -27,7 +29,7 @@ export default async function Home({searchParams}) {
   
   return (
     <div>
-      <Results results={results} />
+      <AlbumResults results={results} />
     </div>
   )
 }
